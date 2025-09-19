@@ -1,0 +1,190 @@
+Replit Project Prompt: Hijama & Wellness Center Website (Multi-Language)
+Project Title: Hijama & Wellness Center (Multi-Language)
+Project Goal: Develop a professional, responsive, and user-friendly website for a traditional Hijama (Cupping Therapy) and wellness center, supporting Azerbaijani, Russian, and English languages. The website should effectively inform potential clients about services, benefits, and build trust in all three languages.
+Technology Stack (Recommended for Replit):
+Frontend: HTML5, CSS3, JavaScript (for language switching, interactivity like carousels, accordions, form validation).
+Optional Backend (for contact form submission if not using a third-party service): Node.js with Express (basic server for handling form submissions). For simplicity, initially, assume the contact form will either email directly (via mailto: or a client-side form submission service).
+Detailed Replit Setup & File Structure (Multi-Language):
+The core idea for multi-language is to either:
+Duplicate HTML files for each language: e.g., index_az.html, index_ru.html, index_en.html. (Easier for small sites, but more redundant).
+Use a single HTML file and dynamically load content with JavaScript: (More complex initially, but better for maintenance).
+Given Replit's environment and for better maintainability, we'll opt for a hybrid approach: single HTML files for structure, and JavaScript to load content based on selected language. This means we'll store content in JSON files or directly in JavaScript objects.
+Replit Environment: Choose a "Web Server" template (e.g., HTML, CSS, JS).
+File Structure:
+code
+Code
+/
+├── index.html          (Home Page - structure only)
+├── about.html          (About Us Page - structure only)
+├── services.html       (Services Overview - structure only)
+├── benefits.html       (Benefits Page - structure only)
+├── faq.html            (FAQ Page - structure only)
+├── contact.html        (Contact Us Page - structure only)
+├── assets/
+│   ├── css/
+│   │   └── style.css   (Main CSS file)
+│   ├── js/
+│   │   ├── script.js   (Main JavaScript file for interactivity)
+│   │   └── translations.js (JavaScript object or JSON for all text content)
+│   └── images/
+│       ├── logo.png    (Website Logo)
+│       ├── hero-bg.jpg (Hero section background image)
+│       ├── practitioner1.jpg
+│       ├── practitioner2.jpg
+│       ├── facility1.jpg
+│       ├── facility2.jpg
+│       └── ...         (Other relevant images)
+├── README.md           (Project description and instructions)
+Content & Structure Requirements (Page by Page - HTML will contain placeholders, JS will fill them):
+Each HTML file will have a basic structure and data-i18n attributes on elements that need to display translatable text. The translations.js file will hold all the actual text content for each language.
+General Multi-Language Approach:
+Language Selector: In the header, add a dropdown or buttons (AZ, RU, EN) to switch languages.
+translations.js (or translations.json): This file will contain all translatable strings, structured like this:
+code
+JavaScript
+// assets/js/translations.js
+const translations = {
+    "az": {
+        "home_header_logo_alt": "Hicama Mərkəzi Loqosu",
+        "home_nav_home": "Ana Səhifə",
+        "home_nav_about": "Haqqımızda",
+        "home_hero_headline": "Müasir Sağlamlıq Üçün Qədim Şəfa Təcrübəsi",
+        // ... all text for Azerbaijani
+    },
+    "ru": {
+        "home_header_logo_alt": "Логотип Центра Хиджамы",
+        "home_nav_home": "Главная",
+        "home_nav_about": "О нас",
+        "home_hero_headline": "Опыт Древнего Исцеления для Современного Здоровья",
+        // ... all text for Russian
+    },
+    "en": {
+        "home_header_logo_alt": "Hijama Center Logo",
+        "home_nav_home": "Home",
+        "home_nav_about": "About Us",
+        "home_hero_headline": "Experience Ancient Healing for Modern Wellness",
+        // ... all text for English
+    }
+};
+script.js: This will handle:
+Loading the correct language from localStorage or default.
+Updating all elements with data-i18n attributes based on the selected language.
+Saving the user's language preference.
+Example HTML structure for translatable elements:
+code
+Html
+<!-- In index.html -->
+<header>
+    <img src="assets/images/logo.png" alt="Hijama Center Logo" data-i18n="home_header_logo_alt">
+    <nav>
+        <ul>
+            <li><a href="index.html" data-i18n="home_nav_home"></a></li>
+            <li><a href="about.html" data-i18n="home_nav_about"></a></li>
+            <!-- ... other nav items -->
+        </ul>
+    </nav>
+    <div class="language-selector">
+        <button data-lang="az">AZ</button>
+        <button data-lang="ru">RU</button>
+        <button data-lang="en">EN</button>
+    </div>
+</header>
+<section class="hero">
+    <h1 data-i18n="home_hero_headline"></h1>
+    <p data-i18n="home_hero_subheadline"></p>
+    <a href="#" class="btn" data-i18n="home_hero_cta"></a>
+</section>
+Page-Specific Content & Structure (HTML files will have placeholders like above):
+1. index.html (Home Page)
+Header:
+<img> for Logo (alt attribute will be translated).
+Navigation Menu links (text will be translated).
+Phone Number (static or translated based on region).
+"Book Now" Button (text translated).
+Language Selector: Dropdown or buttons (AZ, RU, EN).
+Hero Section:
+Headline (translated).
+Sub-headline (translated).
+Call to Action (CTA) button (text translated).
+Background Image/Video (static, but description can be translated if alt text is used).
+Brief Introduction:
+Paragraph (translated).
+Key Services Overview:
+Sections/icons (titles and descriptions translated, links will be to the current language's services.html if duplicating, or just services.html if dynamic).
+Why Choose Us:
+Heading and bullet points/blurbs (all translated).
+Testimonials/Reviews:
+Heading, client feedback (all translated).
+Call to Action (Bottom):
+Heading and button text (all translated).
+Footer:
+Address, Phone, Email (static or translated).
+Social Media Links (icons).
+Copyright, Privacy Policy, Terms of Service links (text translated).
+2. about.html (About Us Page)
+Our Story/Mission: Heading and paragraphs (all translated).
+Our Practitioners: Heading, practitioner names, and bios (all translated).
+Our Facility: Heading (translated), photos (descriptions translated if alt text is used).
+Our Values: Heading, ethics, patient care, safety, education points (all translated).
+3. services.html (Services Page)
+Overview of Hijama: Heading and general explanation (all translated).
+Detailed Service Sections:
+Wet Cupping: Heading, explanation, process, benefits, what to expect (all translated).
+Dry Cupping: Heading, explanation, process, benefits, what to expect (all translated).
+Massage Cupping: Heading, explanation, process, benefits, what to expect (all translated).
+Other Therapies (if offered): Heading, explanations (all translated).
+Preparation & Aftercare Instructions: Heading and guidelines (all translated).
+4. benefits.html (Benefits of Hijama Page)
+Comprehensive List of Benefits: Heading, list items with descriptions (all translated).
+Scientific Basis: Heading and explanation (all translated).
+5. faq.html (Frequently Asked Questions Page)
+FAQ Section: Heading, common questions, and their answers (all translated) in an accordion format.
+6. contact.html (Contact Us Page)
+Contact Form:
+Heading, form labels (Name, Email, Phone, Message), and button text (all translated).
+Clinic Information: Heading, address, phone, email (all translated).
+Operating Hours: Heading and hours (all translated).
+Google Map Integration: Heading (translated), map iframe (static).
+Directions/Parking Information: Heading and details (all translated).
+Design & Aesthetic Considerations (assets/css/style.css):
+Color Palette: Use calming, natural colors (e.g., greens, blues, earthy tones, subtle golds).
+Typography:
+Use clean, legible sans-serif fonts that support Cyrillic, Latin, and Azerbaijani alphabets. Example: font-family: 'Open Sans', 'Roboto', Arial, sans-serif; for body text and font-family: 'Lora', 'Playfair Display', serif; for headings. (Link Google Fonts in index.html and other HTML files).
+Imagery:
+All images (assets/images/) should be high-quality, professional, and culturally sensitive.
+Focus on wellness, natural healing, calm clinic environment, and professional practitioners.
+Avoid graphic depictions of the cupping process unless very subtle and tasteful. Focus on the positive outcomes.
+Layout:
+Use CSS Flexbox and Grid for responsive and modern layouts.
+Ensure consistent spacing, padding, and margins.
+Mobile Responsiveness:
+Implement @media queries in CSS to ensure the website looks and functions perfectly on all screen sizes (desktops, tablets, mobile phones). This is critical.
+Professionalism:
+Clean, uncluttered design.
+Easy navigation and clear calls to action.
+Consistent branding (logo, colors, fonts).
+Cultural Sensitivity:
+The overall aesthetic should respect the traditional and cultural roots of Hijama. This can be conveyed through color choices, subtle patterns, and respectful imagery.
+Interactive Elements (assets/js/script.js & assets/js/translations.js):
+assets/js/translations.js: Contains all text content for az, ru, en languages, structured with unique keys.
+assets/js/script.js:
+Language Switching Logic:
+Function to applyTranslations(lang) that iterates through all elements with data-i18n attributes and updates their textContent (or alt for images) using the translations object.
+Event listeners for language selector buttons/dropdown to call applyTranslations().
+Store/retrieve selected language in localStorage to remember user preference.
+Default language: Azerbaijani (az) if no preference is found.
+Navigation: Smooth scrolling for anchor links (optional).
+Carousel: For testimonials section on index.html.
+Accordion: For FAQ section on faq.html.
+Form Validation: Basic client-side validation for the contact form (e.g., ensuring fields are not empty, email format is correct).
+Mobile Menu Toggle: If implementing a hamburger menu for small screens.
+Final Replit Instructions:
+Create a new Replit project using the "HTML, CSS, JS" template.
+Set up the file structure as described above, including the assets/js/translations.js file.
+For each HTML file, create the structural elements and add data-i18n="your_translation_key" attributes to all text content that needs to be translated. Do not put actual text directly into these elements initially, let JavaScript handle it.
+Populate assets/js/translations.js with all the required text for Azerbaijani, Russian, and English, using logical keys.
+Implement the language switching logic in assets/js/script.js, along with other interactive elements.
+Style the website using assets/css/style.css, adhering to the design considerations and ensuring font support for all three languages.
+Ensure all internal links work correctly. When linking to other pages, the script.js will handle loading the correct language content once the new page loads.
+Test for mobile responsiveness on various screen sizes.
+Add a comprehensive README.md explaining the project, how to run it, and multi-language functionality.
